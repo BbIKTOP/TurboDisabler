@@ -12,11 +12,28 @@
 		773C458629D76B010053F027 /* TurboDisablerPower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 773C458429D76B010053F027 /* TurboDisablerPower.cpp */; };
 		773C458A29D76B180053F027 /* TurboDisablerProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 773C458829D76B180053F027 /* TurboDisablerProperties.cpp */; };
 		773C45A529D793940053F027 /* TurboDisablerNVRAM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 773C45A429D793940053F027 /* TurboDisablerNVRAM.cpp */; };
+		7796182229D87B0500EAF036 /* TurboDisablerIOClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7796181529D87AC100EAF036 /* TurboDisablerIOClient.cpp */; };
+		7796182429D87C8900EAF036 /* settings.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7796182329D87C8900EAF036 /* settings.hpp */; };
+		7796182529D87C8900EAF036 /* settings.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 7796182329D87C8900EAF036 /* settings.hpp */; };
+		7796182629D87DAA00EAF036 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4CF6929CF80110017741B /* IOKit.framework */; };
+		7796182729D87DC800EAF036 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773C45A629D7948B0053F027 /* CoreFoundation.framework */; };
 		77B1C27429D7A41600209E29 /* TurboDisablerCPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77B1C27329D7A41600209E29 /* TurboDisablerCPU.cpp */; };
 		77B4CF5F29CF7F120017741B /* TurboDisabler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 77B4CF5E29CF7F120017741B /* TurboDisabler.hpp */; };
 		77B4CF6129CF7F120017741B /* TurboDisabler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77B4CF6029CF7F120017741B /* TurboDisabler.cpp */; };
 		77B4CF6A29CF80120017741B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B4CF6929CF80110017741B /* IOKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7796181929D87ADE00EAF036 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		772218F229CFCD2000094929 /* TurboDisablerClient.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurboDisablerClient.kext; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -27,6 +44,10 @@
 		773C458829D76B180053F027 /* TurboDisablerProperties.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TurboDisablerProperties.cpp; sourceTree = "<group>"; };
 		773C45A429D793940053F027 /* TurboDisablerNVRAM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TurboDisablerNVRAM.cpp; sourceTree = "<group>"; };
 		773C45A629D7948B0053F027 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		7796181529D87AC100EAF036 /* TurboDisablerIOClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TurboDisablerIOClient.cpp; sourceTree = "<group>"; };
+		7796181629D87AC100EAF036 /* TurboDisablerIOClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TurboDisablerIOClient.hpp; sourceTree = "<group>"; };
+		7796181B29D87ADE00EAF036 /* TurboDisablerIOClient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TurboDisablerIOClient; sourceTree = BUILT_PRODUCTS_DIR; };
+		7796182329D87C8900EAF036 /* settings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = settings.hpp; sourceTree = "<group>"; };
 		77B1C27329D7A41600209E29 /* TurboDisablerCPU.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TurboDisablerCPU.cpp; sourceTree = "<group>"; };
 		77B1C27529D7A9AE00209E29 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
 		77B4CF5B29CF7F120017741B /* TurboDisabler.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurboDisabler.kext; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +62,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7796181829D87ADE00EAF036 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7796182729D87DC800EAF036 /* CoreFoundation.framework in Frameworks */,
+				7796182629D87DAA00EAF036 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,9 +95,19 @@
 			path = TurboDisablerClient;
 			sourceTree = "<group>";
 		};
+		7796181429D87A9800EAF036 /* TurboDisablerIOClient */ = {
+			isa = PBXGroup;
+			children = (
+				7796181529D87AC100EAF036 /* TurboDisablerIOClient.cpp */,
+				7796181629D87AC100EAF036 /* TurboDisablerIOClient.hpp */,
+			);
+			path = TurboDisablerIOClient;
+			sourceTree = "<group>";
+		};
 		77B4CF5129CF7F120017741B = {
 			isa = PBXGroup;
 			children = (
+				7796181429D87A9800EAF036 /* TurboDisablerIOClient */,
 				77B4CF5D29CF7F120017741B /* TurboDisabler */,
 				772218F329CFCD2000094929 /* TurboDisablerClient */,
 				77B4CF5C29CF7F120017741B /* Products */,
@@ -80,6 +120,7 @@
 			children = (
 				77B4CF5B29CF7F120017741B /* TurboDisabler.kext */,
 				772218F229CFCD2000094929 /* TurboDisablerClient.kext */,
+				7796181B29D87ADE00EAF036 /* TurboDisablerIOClient */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,6 +135,7 @@
 				773C458829D76B180053F027 /* TurboDisablerProperties.cpp */,
 				773C45A429D793940053F027 /* TurboDisablerNVRAM.cpp */,
 				77B1C27329D7A41600209E29 /* TurboDisablerCPU.cpp */,
+				7796182329D87C8900EAF036 /* settings.hpp */,
 			);
 			path = TurboDisabler;
 			sourceTree = "<group>";
@@ -116,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				772218F529CFCD2000094929 /* TurboDisablerClient.hpp in Headers */,
+				7796182529D87C8900EAF036 /* settings.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77B4CF5F29CF7F120017741B /* TurboDisabler.hpp in Headers */,
+				7796182429D87C8900EAF036 /* settings.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +191,23 @@
 			productName = TurboDisablerClient;
 			productReference = 772218F229CFCD2000094929 /* TurboDisablerClient.kext */;
 			productType = "com.apple.product-type.kernel-extension";
+		};
+		7796181A29D87ADE00EAF036 /* TurboDisablerIOClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7796181F29D87ADF00EAF036 /* Build configuration list for PBXNativeTarget "TurboDisablerIOClient" */;
+			buildPhases = (
+				7796181729D87ADE00EAF036 /* Sources */,
+				7796181829D87ADE00EAF036 /* Frameworks */,
+				7796181929D87ADE00EAF036 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TurboDisablerIOClient;
+			productName = TurboDisablerIOClient;
+			productReference = 7796181B29D87ADE00EAF036 /* TurboDisablerIOClient */;
+			productType = "com.apple.product-type.tool";
 		};
 		77B4CF5A29CF7F120017741B /* TurboDisabler */ = {
 			isa = PBXNativeTarget;
@@ -173,11 +234,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = st.notexi;
 				TargetAttributes = {
 					772218F129CFCD2000094929 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					7796181A29D87ADE00EAF036 = {
+						CreatedOnToolsVersion = 14.3;
 					};
 					77B4CF5A29CF7F120017741B = {
 						CreatedOnToolsVersion = 14.2;
@@ -199,6 +263,7 @@
 			targets = (
 				77B4CF5A29CF7F120017741B /* TurboDisabler */,
 				772218F129CFCD2000094929 /* TurboDisablerClient */,
+				7796181A29D87ADE00EAF036 /* TurboDisablerIOClient */,
 			);
 		};
 /* End PBXProject section */
@@ -229,6 +294,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7796181729D87ADE00EAF036 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7796182229D87B0500EAF036 /* TurboDisablerIOClient.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77B4CF5729CF7F120017741B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -251,6 +324,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = QRRA4KGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TurboDisablerClient/Info.plist;
@@ -274,6 +348,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = QRRA4KGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TurboDisablerClient/Info.plist;
@@ -287,6 +362,30 @@
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
+		7796182029D87ADF00EAF036 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = QRRA4KGJQM;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7796182129D87ADF00EAF036 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = QRRA4KGJQM;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -323,6 +422,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -381,6 +481,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -407,6 +508,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.1.0;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = QRRA4KGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TurboDisabler/Info.plist;
@@ -430,6 +532,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.1.0;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = QRRA4KGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TurboDisabler/Info.plist;
@@ -455,6 +558,15 @@
 			buildConfigurations = (
 				772218FA29CFCD2100094929 /* Debug */,
 				772218FB29CFCD2100094929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7796181F29D87ADF00EAF036 /* Build configuration list for PBXNativeTarget "TurboDisablerIOClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7796182029D87ADF00EAF036 /* Debug */,
+				7796182129D87ADF00EAF036 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

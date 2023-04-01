@@ -10,15 +10,7 @@
 #include <i386/proc_reg.h>
 
 
-enum
-{   kPowerStateOff,
-    kPowerStateSleep,
-    kPowerStateOn,
-//
-    kNumPowerStates
-};
-
-static IOPMPowerState powerStates[kNumPowerStates] =
+IOPMPowerState TurboDisabler::powerStates[TurboDisabler::kNumPowerStates] =
 {   {   // Off
         kIOPMPowerStateVersion1,          // version
         0,   // capabilityFlags

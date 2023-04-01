@@ -11,25 +11,19 @@
 #include <IOKit/IOLib.h>
 #include <IOKit/IOService.h>
 #include <IOKit/IOUserClient.h>
-//#include <IOKit/IOMessage.h>
-//#include <IOKit/IONotifier.h>
-//#include <IOKit/IOPlatformExpert.h>
 #include <IOKit/IONVRAM.h>
-//#include <IOKit/IOReturn.h>
-//#include <IOKit/IOTypes.h>
-//#include <IOKit/IODeviceTreeSupport.h>
-
-//#include <libkern/c++/OSSymbol.h>
-//#include <libkern/libkern.h>
 
 #include <i386/proc_reg.h>
 
 #include <os/log.h>
 
-#define LOG(f, ...) IOLog(f, ##__VA_ARGS__)
+#include "settings.hpp"
 
-#define TURBO_MODE_DISABLED_MSR_BIT 0x4000000000 /* 1<<32 */
-#define ENABLED_PROP_NAME "TurboMode" /* Used both for Power and NVRAM */
+#ifndef DEBUG
+#define LOG(f, ...) IOLog(f, ##__VA_ARGS__)
+#else
+#define LOG(f, ...) ;
+#endif
 
 class TurboDisabler : public IOService
 {   OSDeclareDefaultStructors(TurboDisabler);
@@ -65,10 +59,20 @@ protected:
 //    virtual IOReturn        powerStateDidChangeTo(IOPMPowerFlags capabilities, unsigned long stateNumber, IOService* whatDevice) override;
 
 private:
-
-
     int initialTurboState;
     bool currentTurboState = true;
+
+public:
+    enum
+    {   kPowerStateOff,
+        kPowerStateSleep,
+        kPowerStateOn,
+        //
+        kNumPowerStates
+    };
+private:
+    static IOPMPowerState powerStates[kNumPowerStates];
+
 
     friend class TurboDisablerClient;
 };
