@@ -22,10 +22,10 @@ int main(int argc, char*argv[])
     if (argc > 1)
     {   switch (argv[1][0])
         {   case '+':
-                mode = true;
+                mode = 1;
                 break;
             case '-':
-                mode = false;
+                mode = 0;
                 break;
             default:
                 printf("Invalid option: \"%s\", exiting.\n", argv[1]);
