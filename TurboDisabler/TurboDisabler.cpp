@@ -25,21 +25,24 @@ bool TurboDisabler::start(IOService* provider)
     initPowerManagement(provider);
     registerService();
 
-    initialTurboState = getInitialTurbo();
-    LOG("TurboDisabler: start. Current turbo state is %d\n", initialTurboState);
     readTurboFromNvram();
     setTurbo();
-
+    LOG("TurboDisabler: start. Current turbo state is %s\n", currentTurboState ? "On" : "Off");
 
     return (true);
 }
 void TurboDisabler::stop(IOService* provider)
-{   LOG("TurboDisabler: stop. Power state will be set to %d\n", initialTurboState);
+{   LOG("TurboDisabler: stop. Power state will be saved as %s\n", currentTurboState ? "On" : "Off");
 
-    setInitialTurbo(initialTurboState);
+    writeTurboToNvram();
 
     deinitPowerManagement();
     super::stop(provider);
+}
+
+bool TurboDisabler::requestTerminate(IOService * provider, IOOptionBits options)
+{   LOG("TurboDisabler: requestTerminate from \"%s\"\n", provider->getName());
+    return (true);
 }
 
 

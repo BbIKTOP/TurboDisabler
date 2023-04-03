@@ -1,0 +1,1 @@
+/Users/viktor/work/c/kexts/TurboDisabler/TurboDisabler/.format.sh

@@ -29,16 +29,19 @@ class TurboDisabler : public IOService
 {   OSDeclareDefaultStructors(TurboDisabler);
 
 public:
-//    virtual bool init(OSDictionary* dict) override;
-//    virtual IOService* probe(IOService* provider, SInt32* score) override;
-//    virtual void free(void) override;
+    void setTurbo(bool mode);
 
     virtual bool start(IOService* provider) override;
     virtual void stop(IOService * provider) override;
+    //    virtual bool init(OSDictionary* dict) override;
+//    virtual IOService* probe(IOService* provider, SInt32* score) override;
+//    virtual void free(void) override;
     virtual IOReturn setProperties(OSObject* properties) override;
 
-    void updateTurboProperty(void);
-    void setTurbo(bool mode);
+    //    virtual IOReturn        powerStateWillChangeTo(IOPMPowerFlags capabilities, unsigned long stateNumber, IOService* whatDevice) override;
+    virtual IOReturn        setPowerState(unsigned long powerStateOrdinal, IOService* whatDevice) override;
+    //    virtual IOReturn        powerStateDidChangeTo(IOPMPowerFlags capabilities, unsigned long stateNumber, IOService* whatDevice) override;
+    virtual bool requestTerminate(IOService * provider, IOOptionBits options) override;
 
 protected:
     void initPowerManagement(IOService* provider);
@@ -50,16 +53,11 @@ protected:
     void enableTurbo(void);
     void disableTurbo(void);
     bool getTurbo(void);
-    bool getInitialTurbo(void);
-    void setInitialTurbo(bool state);
     void setTurbo(void);
 
-//    virtual IOReturn        powerStateWillChangeTo(IOPMPowerFlags capabilities, unsigned long stateNumber, IOService* whatDevice) override;
-    virtual IOReturn        setPowerState(unsigned long powerStateOrdinal, IOService* whatDevice) override;
-//    virtual IOReturn        powerStateDidChangeTo(IOPMPowerFlags capabilities, unsigned long stateNumber, IOService* whatDevice) override;
+    void updateTurboProperty(void);
 
 private:
-    int initialTurboState;
     bool currentTurboState = true;
 
 public:
