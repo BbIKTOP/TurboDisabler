@@ -1,6 +1,6 @@
 //
-//  TurboDisablerClient.c
-//  TurboDisablerClient
+//  TurboDisabler.c
+//  TurboDisabler
 //
 //  Created by Viktor Remennik on 25.03.2023.
 //

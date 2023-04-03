@@ -1,12 +1,12 @@
 //
-//  TurboDisablerIOClient.cpp
+//  TurboDisablerClient.cpp
 //  TurboDisabler
 //
 //  Created by Viktor Remennik on 01.04.2023.
 //  Copyright © 2023 st.notexi. All rights reserved.
 //
 
-#include "TurboDisablerIOClient.hpp"
+#include "TurboDisablerClient.hpp"
 
 int main(int argc, char*argv[])
 {   int mode = -1;
