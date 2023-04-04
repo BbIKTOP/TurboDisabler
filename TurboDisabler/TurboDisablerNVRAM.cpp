@@ -24,7 +24,7 @@ void TurboDisabler::readTurboFromNvram(void)
         OSSafeReleaseNULL(nvram);
         return;
     }
-    const  uint8_t * storedModeData = static_cast<const uint8_t *>(storedMode->getBytesNoCopy());
+    const uint8_t * storedModeData = static_cast<const uint8_t *>(storedMode->getBytesNoCopy());
     LOG("TurboDisabler: readTurboFromNvram: stored value for \""  ENABLED_PROP_NAME "\" is (%d byte(s)): %2.2X...\n", (int)storedMode->getLength(), (unsigned int)storedModeData[0]);
 
     currentTurboState = storedModeData[0];

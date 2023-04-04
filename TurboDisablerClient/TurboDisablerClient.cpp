@@ -46,7 +46,7 @@ int main(int argc, char*argv[])
                         ENABLED_PROP_NAME,
                         CFStringGetSystemEncoding());
 
-    CFBooleanRef currentMode = (CFBooleanRef) IORegistryEntrySearchCFProperty(ioService, kIOPowerPlane, ioKey, kCFAllocatorDefault, 0);
+    CFBooleanRef currentMode = static_cast<CFBooleanRef>(IORegistryEntrySearchCFProperty(ioService, kIOPowerPlane, ioKey, kCFAllocatorDefault, 0));
 
     printf("Current turbo mode is %s\n", currentMode == kCFBooleanTrue ? "On" : "Off");
     CFRelease(currentMode);
