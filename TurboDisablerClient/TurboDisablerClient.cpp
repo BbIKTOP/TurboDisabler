@@ -62,7 +62,6 @@ int main(int argc, char*argv[])
         printf("IORegistryEntrySetCFProperty error %ox8x\n", (int)res);
 
     CFRelease(ioKey);
-
     IOObjectRelease(ioService);
 
     printf("Turbo mode has been set to %s\n", mode ? "On" : "Off");
