@@ -11,7 +11,20 @@ import Cocoa
 
 class InfoWindowController: NSWindowController {
     
-    override var windowNibName: NSNib.Name! { // StatusWindow.xib is the file nam for the xib
-        return NSNib.Name("InfoWindow")
+    @IBOutlet var infoWindow: NSWindow!
+    @IBOutlet weak var infoIcon: NSImageView!
+    
+    override var windowNibName: String! {
+        return "InfoWindow"
+    }
+    
+    override func windowDidLoad() {
+        infoIcon.image?.isTemplate = true
+    }
+        
+    func show() {
+        _ = window
+        infoWindow?.center()
+        infoWindow?.makeKeyAndOrderFront(self)
     }
 }

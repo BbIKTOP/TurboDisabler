@@ -11,7 +11,7 @@
 
 void TurboDisabler::readTurboFromNvram(void)
 {   IORegistryEntry *nvram = fromPath("/options", gIODTPlane);
-    if (!nvram || !OSDynamicCast(IODTNVRAM, nvram))
+    if (!nvram)
     {   LOG("TurboDisabler: readTurboFromNvram: failed to read from NVRAM\n");
         OSSafeReleaseNULL(nvram);
         return;
@@ -35,7 +35,7 @@ void TurboDisabler::readTurboFromNvram(void)
 
 void TurboDisabler::writeTurboToNvram(void)
 {   IORegistryEntry *nvram = fromPath("/options", gIODTPlane);
-    if (!nvram || !OSDynamicCast(IODTNVRAM, nvram))
+    if (!nvram)
     {   LOG("TurboDisabler: writeTurboToNvram: failed to read from NVRAM\n");
         OSSafeReleaseNULL(nvram);
         return;
