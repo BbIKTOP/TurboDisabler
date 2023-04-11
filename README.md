@@ -12,5 +12,3 @@ TurboDisablerClient command line tool is intended to control turbo on/off state 
 ## Copyright
 No rocket science here, but do not use it in commercial products.
 
-## Todo
-Notification area menu tool to control turbo mode.
