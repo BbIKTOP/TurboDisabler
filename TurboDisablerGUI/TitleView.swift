@@ -39,7 +39,7 @@ class TitleView: NSView {
         let tv = (topLevelObjects.first(where: { $0 is NSView }) as? NSView)!
         self.addSubview(tv)
         
-        tv.layer?.backgroundColor = NSColor(named: "MenuTitleColor")?.cgColor
+//        tv.layer?.backgroundColor = NSColor(named: "MenuTitleColor")?.cgColor
         
         actionAbout = defaultAbout
     }
