@@ -34,7 +34,7 @@ int main(int argc, char*argv[])
         printf("Will now try to set turbo mode to the \"%s\" state.\n", mode ? "On" : "Off");
     }
 
-    io_service_t ioService = IOServiceGetMatchingService(kIOMainPortDefault,
+    io_service_t ioService = IOServiceGetMatchingService(kIOMasterPortDefault,
                              IOServiceMatching(serviceName));
 
     if (!ioService)
