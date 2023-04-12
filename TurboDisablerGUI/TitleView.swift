@@ -30,8 +30,7 @@ class TitleView: NSView {
     }
     
 
-    func loadView()
-    {
+    func loadView() {
         var topLevelObjects: NSArray!
         let isNibLoaded = Bundle.main.loadNibNamed("TitleView", owner: self, topLevelObjects: &topLevelObjects)
         if !isNibLoaded {
@@ -40,7 +39,7 @@ class TitleView: NSView {
         let tv = (topLevelObjects.first(where: { $0 is NSView }) as? NSView)!
         self.addSubview(tv)
         
-//        tv.layer?.backgroundColor = NSColor(named: "MenuTitleColor")?.cgColor
+        tv.layer?.backgroundColor = NSColor(named: "MenuTitleColor")?.cgColor
         
         actionAbout = defaultAbout
     }

@@ -21,8 +21,8 @@ class InfoWindowController: NSWindowController {
     override func windowDidLoad() {
         infoIcon.image?.isTemplate = true
     }
-        
-    func show() {
+    
+    func showWin(_ sender: Any?) {
         _ = window
         infoWindow?.center()
         infoWindow?.makeKeyAndOrderFront(self)

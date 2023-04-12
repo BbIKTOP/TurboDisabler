@@ -12,7 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var statusItem: NSStatusItem!
-    var  statusButton: NSStatusBarButton!
+    var statusButton: NSStatusBarButton!
     
     let iconOn =  NSImage(systemSymbolName: "bolt.fill", accessibilityDescription: "TurboDisabler Control")
     let iconOff =  NSImage(systemSymbolName: "bolt.slash.fill", accessibilityDescription: "TurboDisabler Control")
@@ -38,16 +38,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         iconOff?.isTemplate = true
         iconUnknown?.isTemplate = true
         
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         statusButton = statusItem.button
         
-//        statusButton.image = NSImage(systemSymbolName: "bolt.slash.fill", accessibilityDescription: "TurboDisabler Control")
+        statusButton.image = NSImage(systemSymbolName: "bolt.fill", accessibilityDescription: "TurboDisabler Control")
         
         menuItemTitle = NSMenuItem(title: "TurboDisabler", action: nil, keyEquivalent: "")
         menuItemTitle.image = iconUnknown
         menuItemSwitch = NSMenuItem(title: "Switch", action: #selector(actionSwitchMode), keyEquivalent: "t")
         menuItemQuit = NSMenuItem(title: "Quit", action: #selector(actionQuit), keyEquivalent: "q")
-        
         
         menu = NSMenu()
         menu.addItem(menuItemTitle)
@@ -161,10 +160,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     func actionAbout()
     {
-        let aboutController = InfoWindowController()
-        aboutController.show()
+        aboutController.showWin(self)
     }
-/* Title menu item ******************************************************/
-    var titleView: TitleView!
+/* Title menu and Info window ******************************************************/
+    var titleView = TitleView()
+    let aboutController = InfoWindowController()
 }
 
