@@ -15,33 +15,56 @@ OSDefineMetaClassAndStructors(TurboDisabler, super);
 
 
 bool TurboDisabler::start(IOService* provider)
-{   LOG("TurboDisabler: start.\n");
+{   LOG("Start.\n");
 
     if (!super::start(provider))
-    {   LOG("TurboDisabler: start: IOService start error\n");
+    {   LOG("start: IOService start error\n");
+        return (false);
+    }
+
+    lock = IOLockAlloc();
+    if (lock == nullptr)
+    {   LOG("start: cannot allocate lock\n");
         return (false);
     }
 
     initPowerManagement(provider);
     registerService();
 
-    readTurboFromNvram();
-    setTurbo();
-    LOG("TurboDisabler: start. Current turbo state is %s\n", currentTurboState ? "On" : "Off");
+    TurboState nvramState;
+    if (readTurboFromNvram(&nvramState) && nvramState != turboStateUnknown) // Primary source
+    {   LOG("start: NVRAM state is %d, current state is %d", nvramState, getSavedTurboState());
+        if (getSavedTurboState() != nvramState)
+        {   LOG("start: saved state does not match current state, setting new");
+            setCPUTurbo(nvramState);
+            setSavedTurboState(nvramState);
+            updateTurboProperty(nvramState);
+        }
+    }
+    else
+    {   LOG("start: cannot read state from NVRAM");
+    }
+
+    setTimer();
 
     return (true);
 }
 void TurboDisabler::stop(IOService* provider)
-{   LOG("TurboDisabler: stop. Power state will be saved as %s\n", currentTurboState ? "On" : "Off");
+{   LOG("stop. Power state will be saved as %d\n", getSavedTurboState());
 
-    writeTurboToNvram();
+    if (getSavedTurboState() != turboStateUnknown)
+    {   writeTurboToNvram(getSavedTurboState());
+    }
 
+    deleteTimer();
     deinitPowerManagement();
+
+    if (lock != nullptr) IOLockFree(lock);
     super::stop(provider);
 }
 
 bool TurboDisabler::requestTerminate(IOService * provider, IOOptionBits options)
-{   LOG("TurboDisabler: requestTerminate from \"%s\"\n", provider->getName());
+{   LOG("requestTerminate from \"%s\"\n", provider->getName());
     return (true);
 }
 
@@ -49,24 +72,24 @@ bool TurboDisabler::requestTerminate(IOService * provider, IOOptionBits options)
 //bool TurboDisabler::init(OSDictionary* dict)
 //{
 //    if (!super::init(dict)) {
-//        LOG("TurboDisabler: init failed\n");
+//        LOG("init failed\n");
 //        return (false);
 //    }
-//    LOG("TurboDisabler: init\n");
+//    LOG("init\n");
 //
 //    return (true);
 //}
 //
 //void TurboDisabler::free(void)
 //{
-//    LOG("TurboDisabler: free\n");
+//    LOG("free\n");
 //
 //    super::free();
 //}
 //
 //IOService* TurboDisabler::probe(IOService* provider, SInt32* score)
 //{
-//    LOG("TurboDisabler: probe\n");
+//    LOG("probe\n");
 //
 //    return (super::probe(provider, score));
 //}

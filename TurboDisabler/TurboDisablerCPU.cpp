@@ -9,37 +9,33 @@
 #include "TurboDisabler.hpp"
 
 
-void TurboDisabler::enableTurbo(void)
-{   LOG("TurboDisabler: enabling turbo.\n");
+void TurboDisabler::enableCPUTurbo(void)
+{   LOG("enableCPUTurbo: Enabling turbo.\n");
     wrmsr64(MSR_IA32_MISC_ENABLE, rdmsr64(MSR_IA32_MISC_ENABLE) & (~TURBO_MODE_DISABLED_MSR_BIT));
-    currentTurboState = true;
-    updateTurboProperty();
 }
-void TurboDisabler::disableTurbo(void)
-{   LOG("TurboDisabler: disabling turbo.\n");
+void TurboDisabler::disableCPUTurbo(void)
+{   LOG("disableCPUTurbo: Disabling turbo.\n");
     wrmsr64(MSR_IA32_MISC_ENABLE, rdmsr64(MSR_IA32_MISC_ENABLE) | TURBO_MODE_DISABLED_MSR_BIT);
-    currentTurboState = false;
-    updateTurboProperty();
 }
 
-bool TurboDisabler::getTurbo(void)
-{   currentTurboState = !(rdmsr64(MSR_IA32_MISC_ENABLE) & TURBO_MODE_DISABLED_MSR_BIT);
-    updateTurboProperty();
-    return (currentTurboState);
+TurboDisabler::TurboState TurboDisabler::getCPUTurbo(void)
+{   uint64_t msr = rdmsr64(MSR_IA32_MISC_ENABLE) & TURBO_MODE_DISABLED_MSR_BIT;
+    return (msr == 0 ? turboStateOff : turboStateOn);
 }
 
 
-void TurboDisabler::setTurbo()
-{   if (currentTurboState)
-    {   enableTurbo();
+void TurboDisabler::setCPUTurbo(TurboDisabler::TurboState mode)
+{   switch (mode)
+    {   case turboStateOn:
+            enableCPUTurbo();
+            break;
+        case turboStateOff:
+            disableCPUTurbo();
+            break;
+        default:
+            LOG("setCPUTurbo: unknown mode");
+            break;
     }
-    else
-    {   disableTurbo();
-    }
-}
-void TurboDisabler::setTurbo(bool mode)
-{   currentTurboState = mode;
-    setTurbo();
 }
 
 

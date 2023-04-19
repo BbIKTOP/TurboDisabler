@@ -10,40 +10,61 @@
 
 
 
-IOReturn TurboDisabler::setProperties(OSObject* properties)
-{   LOG("TurboDisabler: setProperties\n");
+IOReturn TurboDisabler::setProperties(OSObject* properties) // Process roperties from client app
+{   LOG("setProperties");
+
+    if (getSavedTurboState() == turboStateUnknown)
+    {   TurboState nvramState;
+        if (readTurboFromNvram(&nvramState) && nvramState != turboStateUnknown)
+        {   setSavedTurboState(nvramState);
+        }
+    }
+    if (getSavedTurboState() == turboStateUnknown)
+    {   LOG("setProperties: current state is unknown");
+        return (kIOReturnUnsupported);
+    }
+
+//    volatile unsigned long lh, ll;
+//    lh = (unsigned long)this / 0x10000;
+//    ll = (unsigned long)this & 0xFFFF;
+//    LOG("setting properties for %4.4lX%4.4lX", lh, ll);
+
 
     if (properties == nullptr)
-    {   LOG("TurboDisabler: setProperties: no properties\n");
+    {   LOG("setProperties: no properties");
         return (kIOReturnUnsupported);
     }
 
     OSDictionary* propertiesDict;
     propertiesDict = OSDynamicCast(OSDictionary, properties);
     if (propertiesDict == nullptr)
-    {   LOG("TurboDisabler: setProperties: cannot get properties\n");
+    {   LOG("setProperties: cannot get properties");
         return (kIOReturnUnsupported);
     }
     OSObject * rawValue = propertiesDict->getObject(ENABLED_PROP_NAME);
     OSBoolean * boolValue = OSDynamicCast(OSBoolean, rawValue);
     if (boolValue == nullptr)
-    {   LOG("TurboDisabler: setProperties: cannot get \"" ENABLED_PROP_NAME "\" property\n");
-        currentTurboState = (bool)getTurbo();
+    {   LOG("setProperties: cannot get \"" ENABLED_PROP_NAME "\" property");
     }
     else
-    {   LOG("TurboDisabler: setProperties: new value %s\n", boolValue->getValue() ? "Enabled" : "Disabled");
-        currentTurboState = boolValue->getValue();
+    {   LOG("setProperties: new value %s\n", boolValue->getValue() ? "Enabled" : "Disabled");
+        TurboState newState = boolValue->getValue() ? turboStateOn : turboStateOff;
+        setSavedTurboState(newState);
+        setCPUTurbo(newState);
+        writeTurboToNvram(newState);
     }
-    LOG("TurboDisabler: setProperties: \"" ENABLED_PROP_NAME "\" set to %s\n", currentTurboState ? "ON" : "OFF");
-
-    setTurbo();
-
+    LOG("setProperties: \"" ENABLED_PROP_NAME "\" set to %d\n", getSavedTurboState());
     return (kIOReturnSuccess);
 }
 
-void TurboDisabler::updateTurboProperty(void)
-{   OSBoolean * osTurbo = OSBoolean::withBoolean(currentTurboState);
-    setProperty(ENABLED_PROP_NAME, osTurbo);
+void TurboDisabler::updateTurboProperty(TurboDisabler::TurboState state)
+{   if (state == turboStateUnknown)
+    {   removeProperty(ENABLED_PROP_NAME);
+        return;
+    }
+    OSBoolean * osTurbo = OSBoolean::withBoolean(state == turboStateOn);
+    if (!setProperty(ENABLED_PROP_NAME, osTurbo))
+    {   LOG("updateTurboProperty: cannot set \"" ENABLED_PROP_NAME "\" property");
+    }
     OSSafeReleaseNULL(osTurbo);
 }
-

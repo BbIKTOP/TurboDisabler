@@ -9,44 +9,57 @@
 #include "TurboDisabler.hpp"
 
 
-void TurboDisabler::readTurboFromNvram(void)
-{   IORegistryEntry *nvram = fromPath("/options", gIODTPlane);
+bool TurboDisabler::readTurboFromNvram(TurboDisabler::TurboState * turboState)
+{   bool state;
+
+    *turboState = turboStateUnknown;
+
+    IORegistryEntry *nvram = fromPath("/options", gIODTPlane);
     if (!nvram)
-    {   LOG("TurboDisabler: readTurboFromNvram: failed to read from NVRAM\n");
+    {   LOG("readTurboFromNvram: failed to read from NVRAM\n");
         OSSafeReleaseNULL(nvram);
-        return;
+        return (false);
     }
 
     OSData *storedMode = OSDynamicCast(OSData, nvram->getProperty(ENABLED_PROP_NAME));
     if (storedMode == nullptr || storedMode->getLength() <= 0)
-    {   LOG("TurboDisabler: readTurboFromNvram: key " ENABLED_PROP_NAME " not found, defaulting to \"disabled\"\n");
-        currentTurboState = false;
+    {   LOG("readTurboFromNvram: key " ENABLED_PROP_NAME " not found, defaulting to \"enabled\"\n");
         OSSafeReleaseNULL(nvram);
-        return;
+        *turboState = turboStateOn;
+        return (true);
     }
     const uint8_t * storedModeData = static_cast<const uint8_t *>(storedMode->getBytesNoCopy());
-    LOG("TurboDisabler: readTurboFromNvram: stored value for \""  ENABLED_PROP_NAME "\" is (%d byte(s)): %2.2X...\n", (int)storedMode->getLength(), (unsigned int)storedModeData[0]);
+//    LOG("readTurboFromNvram: stored value for \""  ENABLED_PROP_NAME "\" is (%d byte(s)): %2.2X...\n", (int)storedMode->getLength(), (unsigned int)storedModeData[0]);
 
-    currentTurboState = storedModeData[0];
-    LOG("TurboDisabler: readTurboFromNvram: stored value for \""  ENABLED_PROP_NAME "\" is %s\n", currentTurboState ? "ON" : "OFF");
+    state = storedModeData[0] != 0;
+//    LOG("readTurboFromNvram: stored value for \""  ENABLED_PROP_NAME "\" is %s\n", state ? "ON" : "OFF");
 
     OSSafeReleaseNULL(nvram);
+    *turboState = state ? turboStateOn : turboStateOff;
+    return (true);
 }
 
-void TurboDisabler::writeTurboToNvram(void)
-{   IORegistryEntry *nvram = fromPath("/options", gIODTPlane);
-    if (!nvram)
-    {   LOG("TurboDisabler: writeTurboToNvram: failed to read from NVRAM\n");
-        OSSafeReleaseNULL(nvram);
-        return;
+bool TurboDisabler::writeTurboToNvram(TurboDisabler::TurboState state)
+{   if (state == turboStateUnknown)
+    {   LOG("writeTurboToNvram: new state is unknown\n");
+        return (false);
     }
 
-    uint8_t buffer = currentTurboState ? 1 : 0;
+    IORegistryEntry *nvram = fromPath("/options", gIODTPlane);
+    if (!nvram)
+    {   LOG("writeTurboToNvram: failed to read from NVRAM\n");
+        OSSafeReleaseNULL(nvram);
+        return (false);
+    }
+
+    uint8_t buffer = state == turboStateOn ? 1 : 0;
     OSData *storedMode = OSData::withBytes(&buffer, 1);
     if (!nvram->setProperty(ENABLED_PROP_NAME, storedMode))
-    {   LOG("TurboDisabler: writeTurboToNvram: failed to write to NVRAM\n");
+    {   LOG("writeTurboToNvram: failed to write to NVRAM\n");
     }
+//    LOG("writeTurboToNvram: wrote %d\n", (int)buffer);
 
     OSSafeReleaseNULL(storedMode);
     OSSafeReleaseNULL(nvram);
+    return (true);
 }

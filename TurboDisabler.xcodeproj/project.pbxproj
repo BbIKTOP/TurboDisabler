@@ -23,6 +23,7 @@
 		77BC219529E38FB000DBF137 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2BEAF29E3009A00442A6E /* AppDelegate.swift */; };
 		77BC21F429E4F9DF00DBF137 /* InfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC21F329E4F9DF00DBF137 /* InfoWindow.swift */; };
 		77BC21F629E4FBF100DBF137 /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77BC21F529E4FBF100DBF137 /* InfoWindow.xib */; };
+		77C1C32629E8843900018F0E /* TurboDisablerTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C1C32529E8843900018F0E /* TurboDisablerTimer.cpp */; };
 		77E2BEB229E3009A00442A6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2BEB129E3009A00442A6E /* ViewController.swift */; };
 		77E2BEB429E3009C00442A6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77E2BEB329E3009C00442A6E /* Assets.xcassets */; };
 		77E2BEBD29E3012C00442A6E /* TurboDisablerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2BEBC29E3012C00442A6E /* TurboDisablerClient.swift */; };
@@ -30,14 +31,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		77E0D33929E764DC00865108 /* PBXContainerItemProxy */ = {
+		770CD5C129EF0263004770AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 77B4CF5229CF7F120017741B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 77B4CF5A29CF7F120017741B;
 			remoteInfo = TurboDisabler;
 		};
-		77E0D33B29E764DC00865108 /* PBXContainerItemProxy */ = {
+		770CD5C329EF0267004770AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 77B4CF5229CF7F120017741B /* Project object */;
 			proxyType = 1;
@@ -78,6 +79,7 @@
 		77BC219329E37CBB00DBF137 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		77BC21F329E4F9DF00DBF137 /* InfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWindow.swift; sourceTree = "<group>"; };
 		77BC21F529E4FBF100DBF137 /* InfoWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoWindow.xib; sourceTree = "<group>"; };
+		77C1C32529E8843900018F0E /* TurboDisablerTimer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TurboDisablerTimer.cpp; sourceTree = "<group>"; };
 		77E2BEAD29E3009A00442A6E /* TurboDisablerGUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TurboDisablerGUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E2BEAF29E3009A00442A6E /* AppDelegate.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77E2BEB129E3009A00442A6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,9 +154,10 @@
 				77B4CF6029CF7F120017741B /* TurboDisabler.cpp */,
 				77B4CF6229CF7F120017741B /* Info.plist */,
 				773C458429D76B010053F027 /* TurboDisablerPower.cpp */,
-				773C458829D76B180053F027 /* TurboDisablerProperties.cpp */,
 				773C45A429D793940053F027 /* TurboDisablerNVRAM.cpp */,
 				77B1C27329D7A41600209E29 /* TurboDisablerCPU.cpp */,
+				773C458829D76B180053F027 /* TurboDisablerProperties.cpp */,
+				77C1C32529E8843900018F0E /* TurboDisablerTimer.cpp */,
 				7796182329D87C8900EAF036 /* settings.hpp */,
 			);
 			path = TurboDisabler;
@@ -248,8 +251,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				77E0D33A29E764DC00865108 /* PBXTargetDependency */,
-				77E0D33C29E764DC00865108 /* PBXTargetDependency */,
+				770CD5C429EF0267004770AD /* PBXTargetDependency */,
+				770CD5C229EF0263004770AD /* PBXTargetDependency */,
 			);
 			name = TurboDisablerGUI;
 			productName = TurboDisablerGUI;
@@ -335,6 +338,7 @@
 				773C45A529D793940053F027 /* TurboDisablerNVRAM.cpp in Sources */,
 				77B1C27429D7A41600209E29 /* TurboDisablerCPU.cpp in Sources */,
 				77B4CF6129CF7F120017741B /* TurboDisabler.cpp in Sources */,
+				77C1C32629E8843900018F0E /* TurboDisablerTimer.cpp in Sources */,
 				773C458A29D76B180053F027 /* TurboDisablerProperties.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,15 +359,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		77E0D33A29E764DC00865108 /* PBXTargetDependency */ = {
+		770CD5C229EF0263004770AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 77B4CF5A29CF7F120017741B /* TurboDisabler */;
-			targetProxy = 77E0D33929E764DC00865108 /* PBXContainerItemProxy */;
+			targetProxy = 770CD5C129EF0263004770AD /* PBXContainerItemProxy */;
 		};
-		77E0D33C29E764DC00865108 /* PBXTargetDependency */ = {
+		770CD5C429EF0267004770AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7796181A29D87ADE00EAF036 /* TurboDisablerClient */;
-			targetProxy = 77E0D33B29E764DC00865108 /* PBXContainerItemProxy */;
+			targetProxy = 770CD5C329EF0267004770AD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -372,7 +376,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
@@ -389,7 +393,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
@@ -518,6 +522,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.1.1;
@@ -525,7 +530,8 @@
 				DEVELOPMENT_TEAM = QRRA4KGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TurboDisabler/Info.plist;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright ©2023 vik@notexi.st. All rights reserved.";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Viktor Remennik vik@notexi.st. All rights reserved.";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.1;
 				MODULE_NAME = st.notexi.TurboDisabler;
@@ -542,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.1.1;
@@ -549,7 +556,8 @@
 				DEVELOPMENT_TEAM = QRRA4KGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TurboDisabler/Info.plist;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright ©2023 vik@notexi.st. All rights reserved.";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Viktor Remennik vik@notexi.st. All rights reserved.";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.1;
 				MODULE_NAME = st.notexi.TurboDisabler;
@@ -569,16 +577,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TurboDisablerGUI/TurboDisablerGUI.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.1.1;
-				DEVELOPMENT_TEAM = QRRA4KGJQM;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = QRRA4KGJQM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TurboDisabler;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 st.notexi. All rights reserved.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Viktor Remennik vik@notexi.st. All rights reserved.";
 				INFOPLIST_KEY_NSMainStoryboardFile = "";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -589,6 +599,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = st.notexi.TurboDisablerGUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -602,16 +613,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TurboDisablerGUI/TurboDisablerGUI.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.1.1;
-				DEVELOPMENT_TEAM = QRRA4KGJQM;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = QRRA4KGJQM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = TurboDisabler;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 st.notexi. All rights reserved.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Viktor Remennik vik@notexi.st. All rights reserved.";
 				INFOPLIST_KEY_NSMainStoryboardFile = "";
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -622,6 +635,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = st.notexi.TurboDisablerGUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

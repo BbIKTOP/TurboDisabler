@@ -14,6 +14,7 @@
 #define ENABLED_PROP_NAME "TurboMode" /* Used both for Power and NVRAM */
 #define SERVICE_NAME "TurboDisabler"
 
-
+#define TIMER_INITIAL_TIOMEOUT 100
+#define TIMER_LOOP_TIMEOUT 1000
 
 #endif /* settings_h */

@@ -19,7 +19,7 @@ class InfoWindowController: NSWindowController {
     }
     
     override func windowDidLoad() {
-        infoIcon.image?.isTemplate = true
+//        infoIcon.image?.isTemplate = true
     }
     
     func showWin(_ sender: Any?) {
