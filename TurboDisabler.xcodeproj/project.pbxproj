@@ -28,6 +28,7 @@
 		77E2BEB429E3009C00442A6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77E2BEB329E3009C00442A6E /* Assets.xcassets */; };
 		77E2BEBD29E3012C00442A6E /* TurboDisablerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2BEBC29E3012C00442A6E /* TurboDisablerClient.swift */; };
 		77E2BEBF29E301A900442A6E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2BEBE29E301A900442A6E /* main.swift */; };
+		77EC902B29EF6EC1002B1670 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77EC902A29EF6EC1002B1670 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +74,6 @@
 		77B4CF5B29CF7F120017741B /* TurboDisabler.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurboDisabler.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		77B4CF5E29CF7F120017741B /* TurboDisabler.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = TurboDisabler.hpp; sourceTree = "<group>"; };
 		77B4CF6029CF7F120017741B /* TurboDisabler.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = TurboDisabler.cpp; sourceTree = "<group>"; };
-		77B4CF6229CF7F120017741B /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		77B4CF6929CF80110017741B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		77BC219129E36FE600DBF137 /* TitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleView.xib; sourceTree = "<group>"; };
 		77BC219329E37CBB00DBF137 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
@@ -87,6 +87,7 @@
 		77E2BEB829E3009C00442A6E /* TurboDisablerGUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TurboDisablerGUI.entitlements; sourceTree = "<group>"; };
 		77E2BEBC29E3012C00442A6E /* TurboDisablerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurboDisablerClient.swift; sourceTree = "<group>"; };
 		77E2BEBE29E301A900442A6E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		77EC902A29EF6EC1002B1670 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.info; fileEncoding = 4; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,9 +151,9 @@
 		77B4CF5D29CF7F120017741B /* TurboDisabler */ = {
 			isa = PBXGroup;
 			children = (
+				77EC902A29EF6EC1002B1670 /* Info.plist */,
 				77B4CF5E29CF7F120017741B /* TurboDisabler.hpp */,
 				77B4CF6029CF7F120017741B /* TurboDisabler.cpp */,
-				77B4CF6229CF7F120017741B /* Info.plist */,
 				773C458429D76B010053F027 /* TurboDisablerPower.cpp */,
 				773C45A429D793940053F027 /* TurboDisablerNVRAM.cpp */,
 				77B1C27329D7A41600209E29 /* TurboDisablerCPU.cpp */,
@@ -306,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77EC902B29EF6EC1002B1670 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,7 +527,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 1.2.2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = QRRA4KGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -551,7 +553,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 1.2.2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = QRRA4KGJQM;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -580,7 +582,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 1.2.2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = QRRA4KGJQM;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -616,7 +618,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 1.2.2;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = QRRA4KGJQM;
 				ENABLE_HARDENED_RUNTIME = YES;

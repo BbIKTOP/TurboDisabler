@@ -37,7 +37,5 @@
 		<key>com.apple.kpi.mach</key>
 		<string>11.0.0</string>
 	</dict>
-	<key>OSBundleRequired</key>
-	<string>Root</string>
 </dict>
 </plist>

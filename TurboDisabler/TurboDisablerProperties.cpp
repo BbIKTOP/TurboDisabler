@@ -51,6 +51,7 @@ IOReturn TurboDisabler::setProperties(OSObject* properties) // Process roperties
         TurboState newState = boolValue->getValue() ? turboStateOn : turboStateOff;
         setSavedTurboState(newState);
         setCPUTurbo(newState);
+        updateTurboProperty(newState);
         writeTurboToNvram(newState);
     }
     LOG("setProperties: \"" ENABLED_PROP_NAME "\" set to %d\n", getSavedTurboState());
